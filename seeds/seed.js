@@ -22,6 +22,12 @@ const seedDatabase = async () => {
         });
     }
 
+    await productToFarmSeed();
+        console.log('n----- Products To Farms Seeded -----/n');
+
+    await productSeed();
+        console.log('n----- Products Seeded -----/n');
+
     process.exit(0);
 };
 
