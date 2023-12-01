@@ -1,44 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="eng">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund-My-Farm!</title>
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund-a-Farm</title>
+    <link rel="stylesheet" href="/public/css/normalize.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        {{!-- input an image in the span below --}}
-        <span role="img" aria-label="">IMAGE</span>
-        <a href="/">Fund-My-Farm!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally display login or logout links -->
-        {{#if logged_in}}
+    <header>
+        <h1>
+            <p>Fund My Farm!</p>
+            <span role="img" aria-label="">IMAGE</span>
+        </h1>
+        <nav>Enter Nav Bar stuff here
+            {{#if logged_in}}
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
-      </nav>
+        </nav>
     </header>
-    <main class="container container-fluid mt-5">
-      <!-- display the layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
 
-  <!-- display script for logged in users -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+    </footer>
+
+    <!--Script renders only if logged in-->
+    {{#if logged_in}}
+        <script src="/js/logout.js"></script>
+    {{/if}}
+
 </body>
 
 </html>
+
