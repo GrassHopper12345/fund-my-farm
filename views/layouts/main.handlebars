@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund-a-Farm</title>
+    <link rel="stylesheet" href="/public/css/normalize.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body>
+    <header>
+    <nav>Enter Nav Bar stuff here</nav>
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+    </footer>
+
+    <!--Script renders only if logged in-->
+    {{#if logged_in}}
+        <script src="/js/logout.js"></script>
+    {{/if}}
+
+</body>
+
+</html>
