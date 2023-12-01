@@ -9,7 +9,7 @@ module.exports = {
         }   else {
             return `<span for="img" aria-label="aubergine">🍆</span>`
         }
-    };
+    },
 
     get_livestock: () => {
         const randomNum = Math.random();
@@ -21,5 +21,5 @@ module.exports = {
         }   else {
             return `<span for="img" aria-label="chicken">🐔</span>`
         }
-    };
+    }
 }
