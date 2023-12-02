@@ -20,7 +20,7 @@ ProductToFarm.init(
         key: 'id',
       }
     },
-    tag_id: {
+    farm_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'farm',
