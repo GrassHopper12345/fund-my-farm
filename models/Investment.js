@@ -29,13 +29,13 @@ Investment.init(
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        // I think we need to assign the investment to a product but I am not sure. Let J.K. look at  this
+    },
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "investment",
-
+        modelName: "investment",  
     }
 );
-module.exports = User;
+module.exports = Investment;

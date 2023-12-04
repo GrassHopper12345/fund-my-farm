@@ -31,7 +31,7 @@ InvestmentForFarm.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "investmenttofarm",
+        modelName: "investmentforfarm",
     }
 );
 module.export = InvestmentForFarm;
