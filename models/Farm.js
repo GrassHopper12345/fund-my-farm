@@ -23,7 +23,7 @@ Farm.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    needed_funding: {
+    funder_id: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
@@ -35,6 +35,10 @@ Farm.init(
     underscored: true,
     modelName: "farm",
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 07e207284e2f781ba9ce264a055cc150632823a9
 );
 
 module.exports = Farm;
