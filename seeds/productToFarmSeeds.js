@@ -6,12 +6,12 @@ const productToFarmData = [
     farm_id: 6,
   },
   {
-    product_id: 1,
-    farm_id: 7,
+    product_id: 3,
+    farm_id: 6,
   },
   {
     product_id: 1,
-    farm_id: 8,
+    farm_id: 3,
   },
   {
     product_id: 2,
@@ -43,7 +43,7 @@ const productToFarmData = [
   },
   {
     product_id: 4,
-    farm_id: 8,
+    farm_id: 5,
   },
   {
     product_id: 5,

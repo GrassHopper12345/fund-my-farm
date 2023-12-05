@@ -11,6 +11,13 @@ InvestmentForFarm.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "user",
+                key: "id",
+            },
+        },
         farm_id: {
             type: DataTypes.INTEGER,
             references: {
@@ -34,4 +41,4 @@ InvestmentForFarm.init(
         modelName: "investmentforfarm",
     }
 );
-module.export = InvestmentForFarm;
+module.exports = InvestmentForFarm;
