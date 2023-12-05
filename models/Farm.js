@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Farm extends Model { }
+class Farm extends Model {}
 
 Farm.init(
   {
@@ -18,6 +18,15 @@ Farm.init(
     description: {
       type: DataTypes.STRING,
     },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    funder_id: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
   },
   {
     sequelize,
@@ -26,7 +35,6 @@ Farm.init(
     underscored: true,
     modelName: "farm",
   }
-
 );
 
 module.exports = Farm;
