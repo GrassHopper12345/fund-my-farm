@@ -1,7 +1,17 @@
 <!--Main section of the homepage-->
-<div>
-    {{#each farms as |farm|}}
-
+<div class="#">
+    {{#each farms as |farm| }}
+    <h2>
+        {{#if farm.type === produce}}
+            {{{get_crop}}}
+            {{else}}
+            {{{get_livestock}}}
+        <a href="/farms/{{farm.id}}">{{farm.name}}</a>
+    </h2>
+    <p>
+        {{farm.description}}
+    </p>
+    {{/each}}
 </div>
 <!--Sidebar if we can-->
 <div>
