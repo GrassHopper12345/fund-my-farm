@@ -25,6 +25,10 @@ Investment.init(
                 key: "id",
             },
         },
+        product_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         investment_amount: {
             type: DataTypes.FLOAT,
             allowNull: false,
