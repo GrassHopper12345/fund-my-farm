@@ -4,7 +4,6 @@ const ProductToFarm = require('./ProductToFarm');
 const Product = require('./Product');
 const Investment = require('./Investment');
 const InvestmentForFarm = require('./InvestmentForFarm');
-const UserToFarm = require('./UserToFarm');
 
 User.hasMany(Farm, {
     foreignKey: 'user_id',
@@ -26,13 +25,18 @@ Farm.belongsToMany(Product, {
 });
 
 Investment.belongsToMany(Farm, {
-    foreignKey: 'farm_id',
+    foreignKey: 'investment_id',
     through: InvestmentForFarm
 });
 
-InvestmentForFarm.belongsToMany(User, {
+User.belongsToMany(Investment, {
     foreignKey: 'user_id',
-    through: UserToFarm,
+    through: InvestmentForFarm
 });
 
-module.exports = { User, Farm, ProductToFarm, Product, Investment, InvestmentForFarm, UserToFarm };
+// Farm.belongsToMany(Investment, {
+//     foreignKey: 'farm_id',
+//     through: InvestmentForFarm,
+// });
+
+module.exports = { User, Farm, ProductToFarm, Product, Investment, InvestmentForFarm };

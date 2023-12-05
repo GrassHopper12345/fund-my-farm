@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Investment extends Model{}
+class Investment extends Model { }
 
 Investment.init(
     {
@@ -25,17 +25,21 @@ Investment.init(
                 key: "id",
             },
         },
+        product_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         investment_amount: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        // I think we need to assign the investment to a product but I am not sure. Let J.K. look at  this
+    },
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: "investment",
-
     }
 );
-module.exports = User;
+module.exports = Investment;

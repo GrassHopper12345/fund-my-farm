@@ -1,16 +1,20 @@
 <div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
+  <h2>Welcome to {{name}}</h2>
+  
   <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+
   <p>
-    <span for="img" aria-label=""></span>
-    <span for="img" aria-label="money"></span>
-    <span for="img" aria-label="money"></span>
-    <span for="img" aria-label="money"></span>
-    <span for="img" aria-label="money"></span>
+    {{#if farm.product === produce}}
+    {{{get_crop}}}
+    {{else}}
+    {{{get_livestock}}}
+    We carry {{product.product_name}}
   </p>
+  <p>Currently priced at {{product.price}}</p>
+
+  <p>We have {{product.stock}} in stock</p>
+
   <p>
-    <button class="btn btn-primary">Fund this Project!</button>
+    <button class="btn"> Buy Now! </button>
   </p>
 </div>

@@ -11,7 +11,7 @@ Farm.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    farm_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,7 +30,7 @@ Farm.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "farm",
