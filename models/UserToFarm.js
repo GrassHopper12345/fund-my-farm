@@ -32,6 +32,6 @@ UserToFarm.init(
         freezeTableName: true,
         underscored: true,
         modelName: "farm",
-      }
+    }
 );
 module.export = UserToFarm;
