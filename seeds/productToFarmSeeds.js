@@ -1,4 +1,4 @@
-const ProductToFarm = require('../models/ProductToFarm');
+const ProductToFarm = require('../models/ProductToFarm.js');
 
 const productToFarmData = [
   {
