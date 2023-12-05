@@ -1,32 +1,33 @@
 const sequelize = require('../config/connection')
 const { User, Farm } = require('../models')
 
-const userData = require('./userData')
-const farmData = require('./farmData')
-const productToFarmSeed = require('./productToFarm-seeds')
-const productSeed = require('./product-seeds')
-
+const seedUsers = require('./userData');
+const seedFarms = require('./farmData');
+const seedProductToFarm = require('./productToFarmSeeds');
+const seedProducts = require('./productSeeds');
+const seedInvestment = require('./investmentseed.js');
+const seedInvestmentForFarm = require('./InvestmentForFarmSeed');
 
 const seedDatabase = async () => {
-    await sequelize.sync({ force:true });
+    await sequelize.sync({ force: true });
 
-    const users = await User.bulkcreate(userData, {
-        individualHooks: true,
-        returning: true,
-    });
+    await seedUsers();
+    console.log('n----- Users Seeded -----/n');
 
-    for (const farm of farmData) {
-        await Farm.create({
-            ...farm,
-            user_id: users[Math.floor(Math.random()* users.length)].id,
-        });
-    }
+    await seedFarms();
+    console.log('n----- Farm Seeded -----/n');
 
-    await productToFarmSeed();
-        console.log('n----- Products To Farms Seeded -----/n');
+    // await seedProducts();
+    // console.log('n----- Products Seeded -----/n');
 
-    await productSeed();
-        console.log('n----- Products Seeded -----/n');
+    // await seedInvestment();
+    // console.log('n----- Investments Seeded -----/n');
+
+    // await seedProductToFarm();
+    // console.log('n----- Products To Farms Seeded -----/n');
+
+    // await seedInvestmentForFarm();
+    // console.log('n----- Investment To Farm Seeded -----/n');
 
     process.exit(0);
 };

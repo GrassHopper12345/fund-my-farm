@@ -25,19 +25,19 @@ Farm.belongsToMany(Product, {
     through: ProductToFarm,
 });
 
-Investment.belongsToMany(Farm, {
-    foreignKey: 'investment_id',
-    through: InvestmentForFarm
-});
+// Investment.belongsToMany(Farm, {
+//     foreignKey: 'investment_id',
+//     through: InvestmentForFarm
+// });
 
-InvestmentForFarm.belongsToMany(User, {
-    foreignKey: 'user_id',
-    through: UserToFarm,
-});
+// InvestmentForFarm.belongsToMany(User, {
+//     foreignKey: 'user_id',
+//     through: UserToFarm,
+// });
 
-Farm.belongsToMany(Investment, {
-    foreignKey: 'farm_id',
-    through: InvestmentForFarm,
-});
+// Farm.belongsToMany(Investment, {
+//     foreignKey: 'farm_id',
+//     through: InvestmentForFarm,
+// });
 
 module.exports = { User, Farm, ProductToFarm, Product, Investment, InvestmentForFarm, UserToFarm };

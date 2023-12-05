@@ -6,8 +6,8 @@ const userData = [
        email: 'john@example.com',
        password: 'password12345'
     }
-]
+];
 
-const seedDatabase = () => Users.buklkCreate(userData);
+const seedUsers = () => Users.bulkCreate(userData);
 
-module.exports = seedDatabase();
+module.exports = seedUsers;

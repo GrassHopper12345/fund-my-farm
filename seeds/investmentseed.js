@@ -7,6 +7,6 @@ const investmentData = [
         investment_amount: 3.99,
     }
 ]
- const seedDatabase = () => Investments.bulkCreate(investmentData);
+ const seedInvestment = () => Investments.bulkCreate(investmentData);
 
- module.exports = seedDatabase();
+ module.exports = seedInvestment;
