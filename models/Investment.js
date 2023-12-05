@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Investment extends Model{}
+class Investment extends Model { }
 
 Investment.init(
     {
@@ -35,7 +35,7 @@ Investment.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: "investment",  
+        modelName: "investment",
     }
 );
 module.exports = Investment;
