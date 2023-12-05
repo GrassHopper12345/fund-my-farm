@@ -27,3 +27,21 @@ if (email && password) {
     }
   ;
   $('#loginForm').on('submit', loginFormHandler);
+
+  const registerFormHandler = async (event) => {
+    event.preventDefault();
+    $('#registerMessage').remove();
+    const firstName = $('#registerFirstName').val().trim();
+    const lastName = $('#registerLastName').val().trim();
+    const email = $('#registerEmail').val().trim();
+    const password = $('#registerPassword').val().trim();
+    const confirmPassword = $('#registerConfirmPassword').val().trim();
+  }
+    if (password !== confirmPassword) {
+      $('#registrationForm').prepend($('<div>', {
+        class: "alert alert-danger",
+        id: "registrationMessage",
+        html: "<span>The passwords do not match. Please make sure password is typed correclty.</span>"
+      }));
+      return;
+    }
