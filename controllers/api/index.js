@@ -4,7 +4,7 @@ const farmRoutes = require("./farmRoutes");
 const productRoutes = require("./productRoutes");
 
 router.use("/users", userRoutes);
-router.use("/farms", farmRoutes);
+// router.use("/farms", farmRoutes);
 router.use("/products", productRoutes);
 
 module.exports = router;
