@@ -11,11 +11,10 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-//Activating views and public folders
+//Activating public folders
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "views")));
 
 app.use(routes);
 
