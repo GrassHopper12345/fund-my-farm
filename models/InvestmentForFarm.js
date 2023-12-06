@@ -41,4 +41,4 @@ InvestmentForFarm.init(
         modelName: "investmentforfarm",
     }
 );
-module.export = InvestmentForFarm;
+module.exports = InvestmentForFarm;
