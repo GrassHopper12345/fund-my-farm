@@ -15,4 +15,6 @@ router.post("/", withAuth, async (res, req) => {
   }
 });
 
+router.get("/", async (res, req) => {});
+
 module.exports = router;
