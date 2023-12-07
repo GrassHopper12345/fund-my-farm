@@ -1,4 +1,4 @@
-const routes = require("express").Router();
+const router = require("express").Router();
 const { Investment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
