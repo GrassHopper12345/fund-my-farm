@@ -7,6 +7,7 @@ const investmentRoutes = require("./investmentRoutes");
 router.use("/users", userRoutes);
 router.use("/farms", farmRoutes);
 router.use("/products", productRoutes);
-router.use("/investments", investmentRoutes);
+router.use("/investment", investmentRoutes);
+
 
 module.exports = router;

@@ -4,30 +4,31 @@
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Select a farm you would like to fund!:</h3>
-{{!-- dinamically insert farms list that a user can choose from--}}
-{{!-- once farm selected takes user to another page to select what produce and meat user wishs to purchase --}}
-    
-  </div>
-
-  {{#if farms.length}}
-  <div class="col-md-6 farm-list">
-    <h3>Current Farms Funded:</h3>
-{{!-- list of farms funded by user on user page--}}
-    {{#each farms as |farm|}}
-    {{!-- <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-      </div>
-    </div> --}}
-    {{/each}}
-  </div>
-  {{/if}}
+<div class="col-md-6">
+   <h3>Select a farm you would like to fund:</h3>
+    <div class="mb-2">
+      {{#each farms as |farm| }}
+         <p>
+          <a href="/farm/{{farm.id}}">{{farm.farm_name}}</a>
+         </p>
+      {{/each}}
+    </div>
 </div>
+
+{{#if farm.length}}
+   <div class="col-md-6 farm-list">
+      <h3>Current Farms Funded:</h3>
+      {{#each farms as |farm|}}
+         <div class="row mb-2">
+            <div class="col-md-8">
+               <h4><a href="/farm/{{farm.id}}">{{farm.farm_name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+               <button class="btn btn-sm btn-danger" data-id="{{farm.id}}">DELETE</button>
+            </div>
+         </div>
+      {{/each}}
+   </div>
+{{/if}}
 
 <script src="./js/profile.js"></script>

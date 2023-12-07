@@ -2,11 +2,7 @@
 <div class="#">
     {{#each farms as |farm| }}
     <h2>
-        {{#if farm.type === produce}}
-            {{{get_crop}}}
-            {{else}}
-            {{{get_livestock}}}
-        <a href="/farms/{{farm.id}}">{{farm.name}}</a>
+        <a href="/farm/{{farm.id}}">{{farm.farm_name}}</a>
     </h2>
     <p>
         {{farm.description}}
