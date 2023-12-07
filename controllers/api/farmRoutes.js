@@ -14,6 +14,15 @@ router.post("/", withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+// Get all farms
+router.get("/", async (res, req) => {
+  try {
+    const farmData = await Farm.findAll();
+    res.status(200).json(farmData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.delete("/:id", withAuth, async (req, res) => {
   try {
