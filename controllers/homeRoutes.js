@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Farm, User } = require("../models");
+const { Farm, User, Product } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get('/', async (req, res) => {
@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
                 },
             ],
         });
@@ -30,8 +29,7 @@ router.get('/farm/:id', async (req, res) => {
         const farmData = await Farm.findByPk(req.params.id, {
             include: [
                 {
-                    model: User,
-                    attributes: ['name'],
+                    model: Product
                 },
             ],
         });
@@ -49,7 +47,7 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        include: [{ model: Farm }],
+        include: [{ model: Farm, Product }],
       });
   
       const user = userData.get({ plain: true });

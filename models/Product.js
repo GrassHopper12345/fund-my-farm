@@ -35,6 +35,13 @@ Product.init(
                 isNumeric: true
             }
         },
+        farm_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'farm',
+                key: 'id',
+            }
+        }
     },
     {
         sequelize,

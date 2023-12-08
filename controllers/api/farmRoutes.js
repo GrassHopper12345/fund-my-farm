@@ -15,7 +15,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 // Get all farms
-router.get("/", async (res, req) => {
+router.get("/", async (req, res) => {
   try {
     const farmData = await Farm.findAll();
     res.status(200).json(farmData);

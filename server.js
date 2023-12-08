@@ -11,16 +11,6 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-//Activating views and public folders
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "views")));
-
-app.use(routes);
-
-//Set up handlebars
-
 const hbs = exphbs.create({ helpers });
 
 const sess = {
@@ -42,14 +32,14 @@ app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-
-//Activating views and public folders
+//Activating views and public folders middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "views")));
 
 app.use(routes);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
