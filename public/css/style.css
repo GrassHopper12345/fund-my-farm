@@ -15,3 +15,9 @@ footer {
     bottom: 0;
     width: 100vw;
 }
+
+page-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100vw;
+}
