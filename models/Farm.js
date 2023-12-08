@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Farm extends Model {}
+class Farm extends Model { }
 
 Farm.init(
   {
@@ -17,7 +17,17 @@ Farm.init(
     },
     description: {
       type: DataTypes.STRING,
-    }
+    },
+    
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id',
+        }
+      }
+    
+
   },
   {
     sequelize,
