@@ -5,6 +5,7 @@ const Product = require('./Product');
 // const Investment = require('./Investment');
 // const InvestmentForFarm = require('./InvestmentForFarm');
 
+
 User.hasOne(Farm, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
