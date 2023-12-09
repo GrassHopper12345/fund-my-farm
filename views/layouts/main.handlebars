@@ -2,72 +2,73 @@
 <html lang="eng">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fund-a-Farm</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fund-a-Farm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <header class="nav-wrapper teal">
-        {{!-- <h1 class="teal">
-            <span role="img" aria-label="">IMAGE</span>
-        </h1> --}}
-        <nav>
-            <div class="nav-wrapper blue">
-                <a href="/" class="brand-logo right"><img style="height: 5vh"
-                        src="https://i.etsystatic.com/8601213/r/il/05f451/2552054888/il_794xN.2552054888_frmu.jpg"> Fund
-                    My Farm</a>
-                <li id="nav-mobile" class="left hide-on-med-and-down">
-                    {{#if logged_in}}
-                    <li><a href="/profile">PROFILE</a></li>
-                    <li><button class="no-button" id="logout">LOGOUT</button></li>
-                    {{else}}
-                    <li><a href="/login">LOGIN</a></li>
-                    {{/if}}
-                </ul>
-            </div>
-        </nav>
-    </header>
+  <header class="nav-wrapper teal">
+    <nav>
+      <div class="nav-wrapper blue">
+        <a href="/" class="brand-logo right"><img style="height: 5vh"
+            src="https://i.etsystatic.com/8601213/r/il/05f451/2552054888/il_794xN.2552054888_frmu.jpg"> Fund
+          My Farm</a>
+        <li id="nav-mobile" class="left hide-on-med-and-down">
+          {{#if logged_in}}
+        <li><a href="/profile">PROFILE</a></li>
+        <li><button class="no-button" id="logout">LOGOUT</button></li>
+        {{else}}
+        <li><a href="/login">LOGIN</a></li>
+        {{/if}}
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-        {{{body}}}
-    </main>
+  <main>
+    {{{body}}}
+  </main>
 
-       <footer class="page-footer blue">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Fund My Farm</h5>
-                <p class="grey-text text-lighten-4">Fund My Farm is a small business that puts farmers market products and foods within reach for local and national farms and COOPS. You have our guarantee the products solid here are tested for the highest quality. The farms listed on this site are interviewed rigorously to determine if their products meet our standards. </p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/GrassHopper12345/fund-my-farm">GitHub URL</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Return and Refund Policy</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2023 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!"></a>
-            </div>
-          </div>
-        </footer>
+  <footer class="page-footer blue">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Fund My Farm</h5>
+          <p class="grey-text text-lighten-4">Fund My Farm is a small business that puts farmers market products and
+            foods within reach for local and national farms and COOPS. You have our guarantee the products solid here
+            are tested for the highest quality. The farms listed on this site are interviewed rigorously to determine if
+            their products meet our standards. </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/GrassHopper12345/fund-my-farm">GitHub
+                URL</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Return and Refund Policy</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2023 Copyright Text
+        <a class="grey-text text-lighten-4 right" href="#!"></a>
+      </div>
+    </div>
+  </footer>
 
-    <!--Script renders only if logged in-->
-    {{#if logged_in}}
-    <script src="/js/logout.js"></script>
-    {{/if}}
+  <!--Script renders only if logged in-->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
