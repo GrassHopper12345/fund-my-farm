@@ -6,7 +6,7 @@
 ## Table of Contents
 - [Overview](#overview)
 - [User Story](#user-story)
-- [Technologies Used](#technologies-used)
+- [Technologies and Frameworks Used](#technologies-frameworks-used)
 - [Usage Instructions](usage-instructions)
 - [Mock-Up](#mock-up)
 - [GitHub URL](#github-url)
@@ -15,8 +15,20 @@
 ## Overview
 
 
-## Technologies Used
-
+## Technologies and Frameworks Used
+- Bcrypt
+- Connect-Session-Sequelize
+- Dotenv
+- Handlebars.js
+- Express-Handlebars
+- Express-Session
+- Express.js
+- Materialize-css
+- MySQL2
+- Sequelize ORM
+- Node.js
+- Authentication
+- Heroku
 
 ## Usage Instructions
 
