@@ -11,6 +11,13 @@ header {
 }
 
 footer {
-    color: #006400;
-    background-color: #e0e0e0;
+    position: sticky;
+    bottom: 0;
+    width: 100vw;
+}
+
+page-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100vw;
 }

@@ -1,9 +1,10 @@
 const User = require('./User');
 const Farm = require('./Farm');
-// const ProductToFarm = require('./ProductToFarm');
+const ProductToFarm = require('./ProductToFarm');
 const Product = require('./Product');
 // const Investment = require('./Investment');
 // const InvestmentForFarm = require('./InvestmentForFarm');
+
 
 User.hasOne(Farm, {
     foreignKey: 'user_id',
@@ -38,4 +39,4 @@ Product.belongsTo(Farm, {
 //     through: InvestmentForFarm,
 // });
 
-module.exports = { User, Farm, Product };
+module.exports = { User, Farm, Product, ProductToFarm };
