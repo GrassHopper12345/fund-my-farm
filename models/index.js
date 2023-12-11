@@ -13,15 +13,17 @@ User.hasOne(Farm, {
 
 Farm.belongsTo(User, {
     foreignKey: 'user_id',
+    onDelete: 'NULL'
 });
 
 Farm.hasOne(Product, {
     foreignKey: 'farm_id',
-    onDelete: 'CASCADE'
+    onDelete: 'NULL'
 });
 
 Product.belongsTo(Farm, {
     foreignKey: 'farm_id',
+    onDelete: 'NULL',
 });
 
 // Investment.belongsToMany(Farm, {
