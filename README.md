@@ -1,7 +1,7 @@
 # Fund My Farm: E-Commerce
 
 ## 📜 Description 
-What is Fund My Farm: E-Commerce? Well we wanted to bring back farms to the market through the internet. We felt that having the ability to see what type of agriculture a farm has just by going to the web could benefit someone looking for the right farm. Also did you know Fund my Farm will allow you to invest right from the website so you will beable to reserve the agriculture that you desire. As a team we learned a lot not just about farms and agriculture but we also learned many new techniques as a full stack development team. 
+What is Fund My Farm: E-Commerce? Well we wanted to bring back farms to the market through the internet. We felt that having the ability to see what type of agriculture a farm has just by going to the web could benefit someone looking for the right farm. Also did you know Fund my Farm will allow you to invest right from the website so you will be able to reserve the agriculture that you desire. As a team we learned a lot not just about farms and agriculture but we also learned many new techniques as a full stack development team. 
 
 ## 📚 Table of Contents 
 - [Overview](#overview)
