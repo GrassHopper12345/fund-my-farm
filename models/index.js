@@ -12,7 +12,7 @@ User.hasOne(Farm, {
 });
 
 Farm.belongsTo(User, {
-    foreignKey: 'user_id',
+    // foreignKey: 'user_id',
 });
 
 Farm.hasOne(Product, {
