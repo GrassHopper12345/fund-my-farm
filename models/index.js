@@ -1,6 +1,6 @@
 const User = require('./User');
 const Farm = require('./Farm');
-const ProductToFarm = require('./ProductToFarm');
+// const ProductToFarm = require('./ProductToFarm');
 const Product = require('./Product');
 // const Investment = require('./Investment');
 // const InvestmentForFarm = require('./InvestmentForFarm');
@@ -17,7 +17,7 @@ Farm.belongsTo(User, {
 
 Farm.hasOne(Product, {
     foreignKey: 'farm_id',
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
 });
 
 Product.belongsTo(Farm, {
@@ -39,4 +39,4 @@ Product.belongsTo(Farm, {
 //     through: InvestmentForFarm,
 // });
 
-module.exports = { User, Farm, Product, ProductToFarm };
+module.exports = { User, Farm, Product };
