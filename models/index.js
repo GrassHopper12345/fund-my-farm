@@ -1,6 +1,6 @@
 const User = require('./User');
 const Farm = require('./Farm');
-const ProductToFarm = require('./ProductToFarm');
+// const ProductToFarm = require('./ProductToFarm');
 const Product = require('./Product');
 // const Investment = require('./Investment');
 // const InvestmentForFarm = require('./InvestmentForFarm');
@@ -12,7 +12,7 @@ User.hasOne(Farm, {
 });
 
 Farm.belongsTo(User, {
-    // foreignKey: 'user_id',
+    foreignKey: 'user_id',
 });
 
 Farm.hasOne(Product, {

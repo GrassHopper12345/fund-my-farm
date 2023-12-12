@@ -59,4 +59,4 @@ This is the profile view which will show all the farms that your are currently i
 
 ## [Walk-Through Video]()
 
-## [Deployed Site](https://vast-oasis-88840-fbcba1691421.herokuapp.com/)
+## [Deployed Site](https://shielded-earth-03164-a57a2efea6ea.herokuapp.com/)
