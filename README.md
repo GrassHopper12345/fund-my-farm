@@ -59,4 +59,4 @@ This is the profile view which will show all the farms that your are currently i
 
 ## [Walk-Through Video]()
 
-## [Deployed Site](https://shielded-earth-03164-a57a2efea6ea.herokuapp.com/)
+## [Deployed Site](https://floating-hollows-34567-4dfb90f8cf10.herokuapp.com/)
