@@ -1,42 +1,95 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
+{{!--
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+<body ng-app="mainModule" ng-controller="mainController">
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form">
+        <div class="row">
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix"></i>
+            <input class="validate" id="email-login" type="email">
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix"></i>
+            <input id="password-login" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12  login-text">
+            <input type="checkbox" id="remember-me" />
+            <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="#" class="btn waves-effect waves-light col s12" type="submit">Login</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small" type="submit"><a href="#">SignUp!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+            <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
+          </div>
+        </div>
+
+      </form>
+    </div>
   </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
+</body> --}}
 
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
+
+
+
+
+
+<div class="row" style="width: 50vw" id="login-card">
+  <div class="col-md-6" style="height: 50vh">
+    <div>
+      <h3>Login</h3>
+
+      <form class="form login-form" style="width: 50vw" >
+        <div class="form-group">
+          <span for="email-login" style="color:rgb(175, 115, 115)" >Email:</span>
+          <input class="form-input" type="text" id="email-login" style="width: 494px"/>
+        </div>
+        <div class="form-group">
+          <span for="password-login" style="color:rgb(175, 115, 115)">Password:</span>
+          <input class="form-input" type="password" id="password-login" style="width: 465px"/>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+      </form>
+      <div class="col-md-6">
+        <h3>Signup</h3>
+
+        <form class="form signup-form">
+          <div class="form-group">
+            <span for="name-signup" style="color:rgb(175, 115, 115)">Name:</span>
+            <input class="form-input" type="text" id="name-signup" style="width: 492px"/>
+          </div>
+          <div class="form-group">
+            <span for="email-signup" style="color:rgb(175, 115, 115)">Email:</span>
+            <input class="form-input" type="text" id="email-signup" style="width: 494px"/>
+          </div>
+          <div class="form-group">
+            <span for="password-signup" style="color:rgb(175, 115, 115)">Password:</span>
+            <input class="form-input" type="password" id="password-signup" style="width: 465px"/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">signup</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
 
-<script src="./js/login.js"></script>
+  <script src="./js/login.js"></script>
