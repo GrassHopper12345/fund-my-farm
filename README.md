@@ -46,7 +46,7 @@ navigate to browser and type "localhost:3001/"
 This is the home screen that shows the lists of farms but you will need to login to fully invest in the farms.
 ![Alt text](<Screenshot 2023-12-14 at 6.41.01 PM.png>)
 The login screen where you will make your fund my farm account to get started on investing in farms.
-[Alt text](<Screenshot 2023-12-14 at 6.42.21 PM.png>)
+![Alt text](<Screenshot 2023-12-14 at 6.42.21 PM.png>)
 This is the profile view which will show all the farms that your are currently invested in.
 ##  📎 Credits
 - GrassHopper12345 https://github.com/GrassHopper12345
