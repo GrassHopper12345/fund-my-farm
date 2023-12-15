@@ -3,8 +3,8 @@ const router = require('express').Router()
 const { Product } = require('../../models')
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-router.post('/create-checkout-session', async (req, res) => {
-  console.log('req received')
+router.post('/', async (req, res) => {
+  console.log('123')
   try {
     const products = await Product.findAll();
 
@@ -19,7 +19,7 @@ router.post('/create-checkout-session', async (req, res) => {
         quantity: 1,
     }));
 
-    const session = await stripe.checkout.session.create({
+    const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: 'payment',
       success_url: 'https://localhost:3001/success',
