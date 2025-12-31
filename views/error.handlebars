@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m8 offset-m2">
+      <div class="card red lighten-4">
+        <div class="card-content">
+          <span class="card-title">Error {{error.status}}</span>
+          <p>{{error.message}}</p>
+          {{#if error.stack}}
+          <pre class="error-stack">{{error.stack}}</pre>
+          {{/if}}
+        </div>
+        <div class="card-action">
+          <a href="/">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

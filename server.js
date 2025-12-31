@@ -1,24 +1,41 @@
+require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const helmet = require("helmet");
 const routes = require("./controllers");
 const path = require("path");
 const sequelize = require("./config/connection");
 var SequelizeStore = require("connect-session-sequelize")(session.Store);
 const helpers = require("./utils/helpers");
+const { apiLimiter } = require("./middleware/rateLimiter");
+const errorHandler = require("./middleware/errorHandler");
 
 const PORT = process.env.PORT || 3001;
 
+// Validate required environment variables
+if (!process.env.SESSION_SECRET) {
+  console.error("ERROR: SESSION_SECRET environment variable is required");
+  console.error("Please set SESSION_SECRET in your .env file");
+  process.exit(1);
+}
+
 const app = express();
+
+// Security middleware
+app.use(helmet());
+
+// Rate limiting (applied globally, stricter limits can be applied to specific routes)
+app.use("/api", apiLimiter);
 
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: "Secret farm",
+  secret: process.env.SESSION_SECRET,
   cookie: {
     maxAge: 300000,
     httpOnly: true,
-    secure: false,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
   },
   resave: false,
@@ -40,7 +57,9 @@ app.use(express.static(path.join(__dirname, "views")));
 
 app.use(routes);
 
+// Error handler middleware (must be last)
+app.use(errorHandler);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
+  app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 });

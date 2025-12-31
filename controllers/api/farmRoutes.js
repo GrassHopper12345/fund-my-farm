@@ -1,8 +1,36 @@
 const router = require("express").Router();
+const { body, validationResult } = require("express-validator");
 const { Farm } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.post("/", withAuth, async (req, res) => {
+// Validation middleware for farm creation
+const validateFarm = [
+  body("farm_name")
+    .trim()
+    .notEmpty()
+    .withMessage("Farm name is required")
+    .isLength({ min: 2, max: 100 })
+    .withMessage("Farm name must be between 2 and 100 characters"),
+  body("description")
+    .optional()
+    .trim()
+    .isLength({ max: 500 })
+    .withMessage("Description must be less than 500 characters"),
+];
+
+// Helper function to handle validation errors
+const handleValidationErrors = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      message: "Validation failed",
+      errors: errors.array(),
+    });
+  }
+  next();
+};
+
+router.post("/", withAuth, validateFarm, handleValidationErrors, async (req, res) => {
   try {
     const newFarm = await Farm.create({
       ...req.body,
@@ -11,7 +39,7 @@ router.post("/", withAuth, async (req, res) => {
 
     res.status(200).json(newFarm);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: err.message || "Failed to create farm" });
   }
 });
 // Get all farms

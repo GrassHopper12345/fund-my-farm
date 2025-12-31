@@ -1,35 +1,33 @@
-require('dotenv').config()
-const router = require('express').Router()
-const { Product } = require('../../models')
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+require("dotenv").config();
+const router = require("express").Router();
+const { Product } = require("../../models");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-router.post('/create-checkout-session', async (req, res) => {
-  console.log('req received')
+router.post("/create-checkout-session", async (req, res, next) => {
   try {
     const products = await Product.findAll();
 
     const lineItems = products.map((product) => ({
-        price_data: {
-            currency: 'usd',
-            product_data: {
-                name: product.product_name,
-            },
-            unit_amount: product.price * 100,
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: product.product_name,
         },
-        quantity: 1,
+        unit_amount: product.price * 100,
+      },
+      quantity: 1,
     }));
 
-    const session = await stripe.checkout.session.create({
+    const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
-      mode: 'payment',
-      success_url: 'https://localhost:3001/success',
-      cancel_url: 'https://localhost:3001/cancel',
+      mode: "payment",
+      success_url: `${req.protocol}://${req.get("host")}/success`,
+      cancel_url: `${req.protocol}://${req.get("host")}/cancel`,
     });
 
     res.redirect(303, session.url);
   } catch (error) {
-    console.error('Error creating checkout session:', error);
-    res.status(500).send('Internal Server Error');
+    next(error);
   }
 });
 
