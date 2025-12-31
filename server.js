@@ -48,7 +48,9 @@ const sess = {
     maxAge: 300000,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    // Use "lax" for development to allow cross-origin requests (localhost:3000 -> localhost:3001)
+    // In production, consider "strict" if frontend and backend are on same domain
+    sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
   },
   resave: false,
   saveUninitialized: true,

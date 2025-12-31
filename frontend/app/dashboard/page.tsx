@@ -27,6 +27,12 @@ export default function DashboardPage() {
         authApi.getMyInvestments(),
       ]);
 
+      // Check if user is authenticated
+      if (userResponse.message === "Not authenticated" || !userResponse.data) {
+        router.push("/login");
+        return;
+      }
+
       if (userResponse.data) {
         setUser(userResponse.data);
       }
@@ -37,10 +43,8 @@ export default function DashboardPage() {
         setInvestments(investmentsResponse.data);
       }
     } catch (error: any) {
-      if (error.message?.includes("401") || error.message?.includes("Not authenticated")) {
-        router.push("/login");
-      }
       console.error("Failed to load dashboard:", error);
+      router.push("/login");
     } finally {
       setLoading(false);
     }

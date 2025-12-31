@@ -129,6 +129,16 @@ router.post("/logout", (req, res) => {
 // Get current user (me)
 router.get("/me", async (req, res) => {
   try {
+    // Debug: Log session info (remove in production)
+    if (process.env.NODE_ENV !== "production") {
+      console.log("Session check:", {
+        hasSession: !!req.session,
+        loggedIn: req.session?.logged_in,
+        userId: req.session?.user_id,
+        sessionId: req.sessionID,
+      });
+    }
+    
     if (!req.session.logged_in) {
       return res.status(401).json({ message: "Not authenticated" });
     }

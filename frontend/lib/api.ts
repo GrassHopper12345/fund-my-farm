@@ -21,6 +21,11 @@ async function fetchApi<T>(
     },
   });
 
+  // Handle 401 (Unauthorized) gracefully - don't throw, return empty response
+  if (response.status === 401) {
+    return { message: "Not authenticated" } as ApiResponse<T>;
+  }
+
   if (!response.ok) {
     const error = await response.json().catch(() => ({ message: "Request failed" }));
     throw new Error(error.message || `HTTP error! status: ${response.status}`);

@@ -46,15 +46,23 @@ The backend API supports both frontends, with CORS configured for the Next.js ap
 
 ## Screenshots
 
-### Homepage
-![Homepage](Screenshot%202023-12-14%20at%206.40.34%20PM.png)
-The home screen displays a list of available farms. Login is required to invest in farms.
+### Modern Next.js Frontend
 
-### Login
+#### Homepage (Modern Frontend)
+![Modern Homepage](frontend-homepage.png)
+The modern Next.js frontend features a clean, responsive design with a hero section, feature cards, and clear call-to-action buttons. Built with TypeScript and Tailwind CSS for a professional, mobile-friendly experience.
+
+### Legacy Handlebars Frontend
+
+#### Homepage (Legacy)
+![Homepage](Screenshot%202023-12-14%20at%206.40.34%20PM.png)
+The original server-rendered home screen displays a list of available farms. Login is required to invest in farms.
+
+#### Login (Legacy)
 ![Login](Screenshot%202023-12-14%20at%206.41.01%20PM.png)
 Create a Fund My Farm account to get started investing in farms.
 
-### Profile
+#### Profile (Legacy)
 ![Profile](Screenshot%202023-12-14%20at%206.42.21%20PM.png)
 View all farms you're currently invested in from your profile page.
 

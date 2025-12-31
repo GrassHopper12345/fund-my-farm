@@ -21,8 +21,12 @@ export default function Navbar() {
       if (response.data) {
         setIsLoggedIn(true);
         setUser(response.data);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
       }
     } catch (error) {
+      // Silently handle auth errors - user is just not logged in
       setIsLoggedIn(false);
       setUser(null);
     }
