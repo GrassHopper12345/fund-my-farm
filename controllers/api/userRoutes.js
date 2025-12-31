@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { body, validationResult } = require("express-validator");
-const { User } = require("../../models");
+const { User, Farm, Product } = require("../../models");
 const { authLimiter } = require("../../middleware/rateLimiter");
 
 // Validation middleware for user registration
@@ -123,6 +123,66 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+// Get current user (me)
+router.get("/me", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [
+        {
+          model: Farm,
+          include: [{ model: Product }],
+        },
+      ],
+    });
+
+    if (!userData) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(userData);
+  } catch (err) {
+    res.status(500).json({ message: err.message || "Failed to fetch user" });
+  }
+});
+
+// Get current user's farms/campaigns
+router.get("/me/campaigns", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    const farmData = await Farm.findAll({
+      where: { user_id: req.session.user_id },
+      include: [{ model: Product }],
+    });
+
+    res.json(farmData);
+  } catch (err) {
+    res.status(500).json({ message: err.message || "Failed to fetch campaigns" });
+  }
+});
+
+// Get current user's investments (placeholder - using farms for now)
+router.get("/me/investments", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    // For now, return empty array since investment model is commented out
+    // This can be expanded when investment tracking is implemented
+    res.json([]);
+  } catch (err) {
+    res.status(500).json({ message: err.message || "Failed to fetch investments" });
   }
 });
 

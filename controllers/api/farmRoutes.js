@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { body, validationResult } = require("express-validator");
-const { Farm } = require("../../models");
+const { Farm, User, Product } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // Validation middleware for farm creation
@@ -45,10 +45,30 @@ router.post("/", withAuth, validateFarm, handleValidationErrors, async (req, res
 // Get all farms
 router.get("/", async (req, res) => {
   try {
-    const farmData = await Farm.findAll();
+    const farmData = await Farm.findAll({
+      include: [{ model: User }, { model: Product }],
+    });
     res.status(200).json(farmData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// Get single farm by ID
+router.get("/:id", async (req, res) => {
+  try {
+    const farmData = await Farm.findByPk(req.params.id, {
+      include: [{ model: User }, { model: Product }],
+    });
+
+    if (!farmData) {
+      res.status(404).json({ message: "No farm found with this id!" });
+      return;
+    }
+
+    res.status(200).json(farmData);
+  } catch (err) {
+    res.status(500).json({ message: err.message || "Failed to fetch farm" });
   }
 });
 

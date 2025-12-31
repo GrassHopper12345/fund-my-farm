@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
+const cors = require("cors");
 const routes = require("./controllers");
 const path = require("path");
 const sequelize = require("./config/connection");
@@ -22,8 +23,19 @@ if (!process.env.SESSION_SECRET) {
 
 const app = express();
 
+// CORS configuration for Next.js frontend
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
 
 // Rate limiting (applied globally, stricter limits can be applied to specific routes)
 app.use("/api", apiLimiter);
