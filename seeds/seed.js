@@ -11,12 +11,15 @@ const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
     await seedUsers();
+    // eslint-disable-next-line no-console
     console.log('n----- Users Seeded -----/n');
 
     await seedFarms();
+    // eslint-disable-next-line no-console
     console.log('n----- Farm Seeded -----/n');
 
     await seedProducts();
+    // eslint-disable-next-line no-console
     console.log('n----- Products Seeded -----/n');
 
     // await seedInvestment();

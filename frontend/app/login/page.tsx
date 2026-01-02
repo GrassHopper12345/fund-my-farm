@@ -21,12 +21,30 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await authApi.login(email, password);
-      router.push("/dashboard");
-      router.refresh();
+      const response = await authApi.login(email, password);
+      
+      // Check if login was successful (has user data)
+      if (response.data && response.data.id) {
+        // Verify authentication works before redirecting
+        try {
+          await new Promise((resolve) => setTimeout(resolve, 300));
+          const authCheck = await authApi.getMe();
+          if (authCheck.data) {
+            window.location.href = "/dashboard";
+          } else {
+            setError("Login succeeded but session not set. Please try again.");
+            setLoading(false);
+          }
+        } catch (authErr) {
+          setError("Login succeeded but authentication failed. Please try again.");
+          setLoading(false);
+        }
+      } else {
+        setError("Login succeeded but authentication failed. Please try again.");
+        setLoading(false);
+      }
     } catch (err: any) {
       setError(err.message || "Login failed. Please check your credentials.");
-    } finally {
       setLoading(false);
     }
   };

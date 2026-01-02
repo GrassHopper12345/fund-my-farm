@@ -7,7 +7,7 @@ const cors = require("cors");
 const routes = require("./controllers");
 const path = require("path");
 const sequelize = require("./config/connection");
-var SequelizeStore = require("connect-session-sequelize")(session.Store);
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const helpers = require("./utils/helpers");
 const { apiLimiter } = require("./middleware/rateLimiter");
 const errorHandler = require("./middleware/errorHandler");
@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 3001;
 
 // Validate required environment variables
 if (!process.env.SESSION_SECRET) {
+  // eslint-disable-next-line no-console
   console.error("ERROR: SESSION_SECRET environment variable is required");
+  // eslint-disable-next-line no-console
   console.error("Please set SESSION_SECRET in your .env file");
   process.exit(1);
 }
@@ -75,5 +77,6 @@ app.use(routes);
 app.use(errorHandler);
 
 sequelize.sync({ force: false }).then(() => {
+  // eslint-disable-next-line no-console
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 });

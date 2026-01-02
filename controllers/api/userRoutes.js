@@ -67,12 +67,19 @@ router.post(
     try {
       const userData = await User.create(req.body);
 
-      req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
+      // Set session data
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
 
-        res.status(200).json(userData);
+      // Wait for session to be saved before responding
+      await new Promise((resolve, reject) => {
+        req.session.save((err) => {
+          if (err) reject(err);
+          else resolve();
+        });
       });
+
+      res.status(200).json(userData);
     } catch (err) {
       res.status(400).json({ message: err.message || "Registration failed" });
     }
@@ -104,12 +111,19 @@ router.post(
         return;
       }
 
-      req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
+      // Set session data
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
 
-        res.json({ user: userData, message: "You are now logged in!" });
+      // Wait for session to be saved before responding
+      await new Promise((resolve, reject) => {
+        req.session.save((err) => {
+          if (err) reject(err);
+          else resolve();
+        });
       });
+
+      res.json({ user: userData, message: "You are now logged in!" });
     } catch (err) {
       res.status(400).json({ message: err.message || "Login failed" });
     }
@@ -129,16 +143,6 @@ router.post("/logout", (req, res) => {
 // Get current user (me)
 router.get("/me", async (req, res) => {
   try {
-    // Debug: Log session info (remove in production)
-    if (process.env.NODE_ENV !== "production") {
-      console.log("Session check:", {
-        hasSession: !!req.session,
-        loggedIn: req.session?.logged_in,
-        userId: req.session?.user_id,
-        sessionId: req.sessionID,
-      });
-    }
-    
     if (!req.session.logged_in) {
       return res.status(401).json({ message: "Not authenticated" });
     }
@@ -157,7 +161,7 @@ router.get("/me", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    res.json(userData);
+    res.json({ data: userData });
   } catch (err) {
     res.status(500).json({ message: err.message || "Failed to fetch user" });
   }
@@ -175,7 +179,7 @@ router.get("/me/campaigns", async (req, res) => {
       include: [{ model: Product }],
     });
 
-    res.json(farmData);
+    res.json({ data: farmData });
   } catch (err) {
     res.status(500).json({ message: err.message || "Failed to fetch campaigns" });
   }
@@ -190,7 +194,7 @@ router.get("/me/investments", async (req, res) => {
 
     // For now, return empty array since investment model is commented out
     // This can be expanded when investment tracking is implemented
-    res.json([]);
+    res.json({ data: [] });
   } catch (err) {
     res.status(500).json({ message: err.message || "Failed to fetch investments" });
   }

@@ -22,12 +22,30 @@ export default function SignupPage() {
     setLoading(true);
 
     try {
-      await authApi.signup(name, email, password);
-      router.push("/dashboard");
-      router.refresh();
+      const response = await authApi.signup(name, email, password);
+      
+      // Check if signup was successful (has user data)
+      if (response.data && response.data.id) {
+        // Verify authentication works before redirecting
+        try {
+          await new Promise((resolve) => setTimeout(resolve, 300));
+          const authCheck = await authApi.getMe();
+          if (authCheck.data) {
+            window.location.href = "/dashboard";
+          } else {
+            setError("Signup succeeded but session not set. Please try logging in.");
+            setLoading(false);
+          }
+        } catch (authErr) {
+          setError("Signup succeeded but authentication failed. Please try logging in.");
+          setLoading(false);
+        }
+      } else {
+        setError("Signup succeeded but authentication failed. Please try logging in.");
+        setLoading(false);
+      }
     } catch (err: any) {
       setError(err.message || "Signup failed. Please try again.");
-    } finally {
       setLoading(false);
     }
   };

@@ -35,7 +35,20 @@ async function fetchApi<T>(
     return {} as ApiResponse<T>;
   }
 
-  return response.json();
+  const jsonData = await response.json();
+  
+  // Handle responses that are already in ApiResponse format (has data or message)
+  if (jsonData.data !== undefined || (jsonData.message && !jsonData.user && !jsonData.id)) {
+    return jsonData as ApiResponse<T>;
+  }
+  
+  // Handle login response: {user: ..., message: ...}
+  if (jsonData.user) {
+    return { data: jsonData.user, message: jsonData.message } as ApiResponse<T>;
+  }
+  
+  // Handle direct data responses (like signup returning user object directly)
+  return { data: jsonData } as ApiResponse<T>;
 }
 
 // Auth API

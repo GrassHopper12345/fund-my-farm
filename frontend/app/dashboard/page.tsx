@@ -21,21 +21,24 @@ export default function DashboardPage() {
   const loadDashboard = async () => {
     try {
       setLoading(true);
-      const [userResponse, campaignsResponse, investmentsResponse] = await Promise.all([
-        authApi.getMe(),
-        authApi.getMyCampaigns(),
-        authApi.getMyInvestments(),
-      ]);
-
+      
+      // First check if user is authenticated
+      const userResponse = await authApi.getMe();
+      
       // Check if user is authenticated
       if (userResponse.message === "Not authenticated" || !userResponse.data) {
         router.push("/login");
         return;
       }
 
-      if (userResponse.data) {
-        setUser(userResponse.data);
-      }
+      // If authenticated, load the rest of the data
+      setUser(userResponse.data);
+      
+      const [campaignsResponse, investmentsResponse] = await Promise.all([
+        authApi.getMyCampaigns(),
+        authApi.getMyInvestments(),
+      ]);
+
       if (campaignsResponse.data) {
         setCampaigns(campaignsResponse.data);
       }
@@ -43,8 +46,12 @@ export default function DashboardPage() {
         setInvestments(investmentsResponse.data);
       }
     } catch (error: any) {
-      console.error("Failed to load dashboard:", error);
-      router.push("/login");
+      // Only redirect if it's an auth error, not other errors
+      if (error.message?.includes("401") || error.message?.includes("Not authenticated")) {
+        router.push("/login");
+      } else {
+        console.error("Failed to load dashboard:", error);
+      }
     } finally {
       setLoading(false);
     }

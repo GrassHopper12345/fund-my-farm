@@ -46,7 +46,14 @@ router.post("/", withAuth, validateFarm, handleValidationErrors, async (req, res
 router.get("/", async (req, res) => {
   try {
     const farmData = await Farm.findAll({
-      include: [{ model: User }, { model: Product }],
+      include: [
+        { model: User },
+        { 
+          model: Product,
+          separate: true, // Load products separately to avoid duplicate farm rows
+        }
+      ],
+      distinct: true, // Ensure unique farms
     });
     res.status(200).json(farmData);
   } catch (err) {
@@ -58,7 +65,13 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const farmData = await Farm.findByPk(req.params.id, {
-      include: [{ model: User }, { model: Product }],
+      include: [
+        { model: User },
+        { 
+          model: Product,
+          separate: true, // Load products separately to avoid issues
+        }
+      ],
     });
 
     if (!farmData) {

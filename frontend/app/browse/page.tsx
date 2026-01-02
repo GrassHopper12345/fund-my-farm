@@ -20,7 +20,12 @@ export default function BrowsePage() {
       setLoading(true);
       const response = await campaignsApi.getAll();
       if (response.data) {
-        setCampaigns(response.data);
+        // Deduplicate campaigns by ID (in case API returns duplicates)
+        const uniqueCampaigns = response.data.filter(
+          (campaign, index, self) =>
+            index === self.findIndex((c) => c.id === campaign.id)
+        );
+        setCampaigns(uniqueCampaigns);
       }
     } catch (error) {
       console.error("Failed to load campaigns:", error);
@@ -78,7 +83,10 @@ export default function BrowsePage() {
                     </p>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-500">
-                        {campaign.products?.length || 0} products
+                        {(() => {
+                          const products = campaign.products || (campaign.product ? (Array.isArray(campaign.product) ? campaign.product : [campaign.product]) : []);
+                          return products.length;
+                        })()} products
                       </span>
                       <Link href={`/campaigns/${campaign.id}`}>
                         <Button size="sm" variant="primary">

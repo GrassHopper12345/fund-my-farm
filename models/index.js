@@ -15,7 +15,7 @@ Farm.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-Farm.hasOne(Product, {
+Farm.hasMany(Product, {
     foreignKey: 'farm_id',
     onDelete: 'CASCADE',
 });

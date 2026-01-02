@@ -33,6 +33,9 @@ const userData = [
     },
 ];
 
-const seedUser = () => User.bulkCreate(userData);
+const seedUser = () => User.bulkCreate(userData, {
+  individualHooks: true, // This ensures password hashing hooks run
+  returning: true,
+});
 
 module.exports = seedUser;

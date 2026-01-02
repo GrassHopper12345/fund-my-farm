@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Product, Farm } = require("../../models");
-const withAuth = require("../../utils/auth");
 
 //get all products
 router.get('/', async (req, res) => {
@@ -23,7 +22,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Farm }]
     });
     if (!productData) {
-      res.status(404).json({ message: (err) });
+      res.status(404).json({ message: "Product not found" });
       return;
     }
     res.status(200).json(productData);
