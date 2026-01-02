@@ -65,13 +65,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const farmData = await Farm.findByPk(req.params.id, {
-      include: [
-        { model: User },
-        { 
-          model: Product,
-          separate: true, // Load products separately to avoid issues
-        }
-      ],
+      include: [{ model: User }, { model: Product }],
     });
 
     if (!farmData) {

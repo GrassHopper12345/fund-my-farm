@@ -83,10 +83,7 @@ export default function BrowsePage() {
                     </p>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-500">
-                        {(() => {
-                          const products = campaign.products || (campaign.product ? (Array.isArray(campaign.product) ? campaign.product : [campaign.product]) : []);
-                          return products.length;
-                        })()} products
+                        {campaign.products?.length || 0} products
                       </span>
                       <Link href={`/campaigns/${campaign.id}`}>
                         <Button size="sm" variant="primary">

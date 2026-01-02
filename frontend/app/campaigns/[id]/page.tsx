@@ -71,23 +71,19 @@ export default function CampaignDetailPage() {
 
           <div className="border-t pt-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Products</h2>
-            {(() => {
-              // Handle both 'products' (plural, array) and 'product' (singular, object or array)
-              const products = campaign.products || (campaign.product ? (Array.isArray(campaign.product) ? campaign.product : [campaign.product]) : []);
-              return products.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {products.map((product: any) => (
-                    <div key={product.id} className="bg-gray-50 p-4 rounded-lg">
-                      <h3 className="font-semibold text-gray-900">{product.product_name}</h3>
-                      <p className="text-gray-600">${product.price}</p>
-                      <p className="text-sm text-gray-500">Stock: {product.stock}</p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-gray-600">No products available for this campaign.</p>
-              );
-            })()}
+            {campaign.products && campaign.products.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {campaign.products.map((product: any) => (
+                  <div key={product.id} className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-gray-900">{product.product_name}</h3>
+                    <p className="text-gray-600">${product.price}</p>
+                    <p className="text-sm text-gray-500">Stock: {product.stock}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-600">No products available for this campaign.</p>
+            )}
           </div>
 
           <div className="mt-6 pt-6 border-t">
