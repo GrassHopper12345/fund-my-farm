@@ -35,9 +35,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Security middleware
-app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" },
-}));
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  })
+);
 
 // Rate limiting (applied globally, stricter limits can be applied to specific routes)
 app.use("/api", apiLimiter);

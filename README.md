@@ -37,6 +37,7 @@ Fund My Farm follows an MVC (Model-View-Controller) architecture with a modern t
 ### Modernization Story
 
 This project demonstrates a **legacy-to-modern transformation**:
+
 - **Original**: Server-rendered Handlebars views with Materialize CSS
 - **Modern**: Next.js 14 + TypeScript frontend consuming REST API
 - **Approach**: Additive modernization—the legacy frontend remains functional while the new frontend provides a modern, responsive experience
@@ -49,20 +50,24 @@ The backend API supports both frontends, with CORS configured for the Next.js ap
 ### Modern Next.js Frontend
 
 #### Homepage (Modern Frontend)
+
 ![Modern Homepage](frontend-homepage.png)
 The modern Next.js frontend features a clean, responsive design with a hero section, feature cards, and clear call-to-action buttons. Built with TypeScript and Tailwind CSS for a professional, mobile-friendly experience.
 
 ### Legacy Handlebars Frontend
 
 #### Homepage (Legacy)
+
 ![Homepage](Screenshot%202023-12-14%20at%206.40.34%20PM.png)
 The original server-rendered home screen displays a list of available farms. Login is required to invest in farms.
 
 #### Login (Legacy)
+
 ![Login](Screenshot%202023-12-14%20at%206.41.01%20PM.png)
 Create a Fund My Farm account to get started investing in farms.
 
 #### Profile (Legacy)
+
 ![Profile](Screenshot%202023-12-14%20at%206.42.21%20PM.png)
 View all farms you're currently invested in from your profile page.
 
@@ -77,17 +82,20 @@ View all farms you're currently invested in from your profile page.
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/GrassHopper12345/fund-my-farm.git
 cd fund-my-farm
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.example .env
 # Edit .env with your database credentials and session secret
@@ -96,6 +104,7 @@ cp .env.example .env
 4. Set up the database (choose one method):
 
 **Option A: Local MySQL**
+
 ```bash
 mysql -u root -p
 source db/schema.sql
@@ -103,6 +112,7 @@ quit
 ```
 
 **Option B: Docker Compose**
+
 ```bash
 docker compose up -d
 # Wait a few seconds for MySQL to initialize
@@ -112,11 +122,13 @@ quit
 ```
 
 5. Seed the database:
+
 ```bash
 npm run seed
 ```
 
 6. Seed the database:
+
 ```bash
 npm run seed
 ```
@@ -124,12 +136,14 @@ npm run seed
 7. Start the application:
 
 **Option A: Backend only (Legacy Handlebars frontend)**
+
 ```bash
 npm start
 # Navigate to http://localhost:3001
 ```
 
 **Option B: Both backend + modern Next.js frontend**
+
 ```bash
 npm install  # Install concurrently if not already installed
 npm run dev
@@ -138,6 +152,7 @@ npm run dev
 ```
 
 **Option C: Run separately**
+
 ```bash
 # Terminal 1: Backend
 npm run dev:backend
@@ -147,6 +162,7 @@ npm run dev:frontend
 ```
 
 8. Set up frontend environment (if using Next.js frontend):
+
 ```bash
 cd frontend
 cp .env.example .env
@@ -191,6 +207,7 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:3001/api
 
 1. Ensure MySQL is installed and running
 2. Create the database:
+
 ```bash
 mysql -u root -p
 source db/schema.sql
@@ -206,6 +223,7 @@ docker compose up -d
 ```
 
 This will start a MySQL 8.0 container with:
+
 - Database: `fund_my_farm_db`
 - User: `root`
 - Password: `password` (change in docker-compose.yml for production)
@@ -213,6 +231,7 @@ This will start a MySQL 8.0 container with:
 - Persistent data volume
 
 After starting the container, run the schema:
+
 ```bash
 mysql -u root -p -h 127.0.0.1 -P 3306
 source db/schema.sql
@@ -220,6 +239,7 @@ quit
 ```
 
 To stop the container:
+
 ```bash
 docker compose down
 ```
@@ -271,6 +291,7 @@ This project showcases a **real-world modernization effort**:
 - **Recruiter-Ready**: Demonstrates understanding of both legacy systems and modern web development practices
 
 Perfect for showcasing:
+
 - Full-stack development skills
 - API design and integration
 - Modern frontend frameworks (Next.js, React, TypeScript)

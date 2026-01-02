@@ -1,41 +1,42 @@
-const User = require('../models/User.js');
+const User = require("../models/User.js");
 
 const userData = [
-    {
-        name: 'John',
-        email: 'john@example.com',
-        password: 'password12345',
-    },
-    {
-        name: 'bob',
-        email: 'bob@example.com',
-        password: 'password12345',
-    },
-    {
-        name: 'Jane',
-        email: 'jane@example.com',
-        password: 'password12345',
-    },
-    {
-        name: 'Johnny',
-        email: 'johnny@example.com',
-        password: 'password12345',
-    },
-    {
-        name: 'Jo',
-        email: 'jo@example.com',
-        password: 'password12345',
-    },
-    {
-        name: 'ohn',
-        email: 'ohn@example.com',
-        password: 'password12345',
-    },
+  {
+    name: "John",
+    email: "john@example.com",
+    password: "password12345",
+  },
+  {
+    name: "bob",
+    email: "bob@example.com",
+    password: "password12345",
+  },
+  {
+    name: "Jane",
+    email: "jane@example.com",
+    password: "password12345",
+  },
+  {
+    name: "Johnny",
+    email: "johnny@example.com",
+    password: "password12345",
+  },
+  {
+    name: "Jo",
+    email: "jo@example.com",
+    password: "password12345",
+  },
+  {
+    name: "ohn",
+    email: "ohn@example.com",
+    password: "password12345",
+  },
 ];
 
-const seedUser = () => User.bulkCreate(userData, {
-  individualHooks: true, // This ensures password hashing hooks run
-  returning: true,
-});
+const seedUser = () =>
+  User.bulkCreate(userData, {
+    individualHooks: true, // This ensures password hashing hooks run
+    returning: true,
+  });
 
 module.exports = seedUser;

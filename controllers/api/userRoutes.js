@@ -181,7 +181,9 @@ router.get("/me/campaigns", async (req, res) => {
 
     res.json({ data: farmData });
   } catch (err) {
-    res.status(500).json({ message: err.message || "Failed to fetch campaigns" });
+    res
+      .status(500)
+      .json({ message: err.message || "Failed to fetch campaigns" });
   }
 });
 
@@ -196,7 +198,9 @@ router.get("/me/investments", async (req, res) => {
     // This can be expanded when investment tracking is implemented
     res.json({ data: [] });
   } catch (err) {
-    res.status(500).json({ message: err.message || "Failed to fetch investments" });
+    res
+      .status(500)
+      .json({ message: err.message || "Failed to fetch investments" });
   }
 });
 

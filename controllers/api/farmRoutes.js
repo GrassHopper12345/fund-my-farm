@@ -30,28 +30,34 @@ const handleValidationErrors = (req, res, next) => {
   next();
 };
 
-router.post("/", withAuth, validateFarm, handleValidationErrors, async (req, res) => {
-  try {
-    const newFarm = await Farm.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
+router.post(
+  "/",
+  withAuth,
+  validateFarm,
+  handleValidationErrors,
+  async (req, res) => {
+    try {
+      const newFarm = await Farm.create({
+        ...req.body,
+        user_id: req.session.user_id,
+      });
 
-    res.status(200).json(newFarm);
-  } catch (err) {
-    res.status(400).json({ message: err.message || "Failed to create farm" });
+      res.status(200).json(newFarm);
+    } catch (err) {
+      res.status(400).json({ message: err.message || "Failed to create farm" });
+    }
   }
-});
+);
 // Get all farms
 router.get("/", async (req, res) => {
   try {
     const farmData = await Farm.findAll({
       include: [
         { model: User },
-        { 
+        {
           model: Product,
           separate: true, // Load products separately to avoid duplicate farm rows
-        }
+        },
       ],
       distinct: true, // Ensure unique farms
     });
